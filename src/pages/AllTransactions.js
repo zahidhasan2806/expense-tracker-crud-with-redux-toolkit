@@ -5,6 +5,7 @@ import Form from '../components/Form'
 import Alltransaction from './Alltransaction';
 import { useState } from 'react';
 import Pagination from '../components/ui/Pagination';
+import RadioFilter from '../components/Transactions/RadioFilter';
 
 const AllTransactions = () => {
     const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const AllTransactions = () => {
     return (
         <>
             {showEditForm && <Form />}
+            <RadioFilter />
             <p className="second_heading">Your Transactions:</p>
 
             <div className="conatiner_of_list_of_transactions">

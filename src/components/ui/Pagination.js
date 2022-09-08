@@ -12,7 +12,6 @@ const Pagination = () => {
     );
 
     const totalPages = Math.ceil(transactions.length / perPageExpenses);
-    console.log(transactions.length);
 
     const handlePageChange = (number) => {
         dispatch(changePage(number))
