@@ -1,11 +1,14 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchTransactions } from "../../features/transaction/transactionSlice";
-import Transaction from "./Transaction";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTransactions } from '../features/transaction/transactionSlice';
+import Form from '../components/Form'
+import Alltransaction from './Alltransaction';
+import { useState } from 'react';
+import Pagination from '../components/ui/Pagination';
 
-export default function Transactions() {
+const AllTransactions = () => {
     const dispatch = useDispatch();
+    const [showEditForm, setShowEditForm] = useState(false)
 
     const { transactions, isLoading, isError } = useSelector(
         (state) => state.transaction
@@ -17,11 +20,9 @@ export default function Transactions() {
         (state) => state.pagination
     );
 
-
     useEffect(() => {
         dispatch(fetchTransactions({ filterMode, search, pageNumber, perPageExpenses }));
     }, [dispatch, filterMode, search, pageNumber, perPageExpenses]);
-
     // decide what to render
     let content = null;
     if (isLoading) content = <p>Loading...</p>;
@@ -30,8 +31,8 @@ export default function Transactions() {
         content = <p className="error">There was an error occured</p>;
 
     if (!isLoading && !isError && transactions?.length > 0) {
-        content = transactions.slice(-5).reverse().map((transaction) => (
-            <Transaction key={transaction.id} transaction={transaction} />
+        content = transactions.map((transaction) => (
+            <Alltransaction key={transaction.id} setShowEditForm={setShowEditForm} transaction={transaction} />
         ));
     }
 
@@ -41,14 +42,15 @@ export default function Transactions() {
 
     return (
         <>
-            <p className="second_heading">Recently added transactions :</p>
+            {showEditForm && <Form />}
+            <p className="second_heading">Your Transactions:</p>
 
             <div className="conatiner_of_list_of_transactions">
                 <ul>{content}</ul>
+                <Pagination />
             </div>
-            <Link to="/all-transactions">
-                <button className="custom-btn">View All</button>
-            </Link>
         </>
     );
-}
+};
+
+export default AllTransactions;

@@ -54,7 +54,7 @@ export default function Form() {
                 id: editing?.id,
                 data: {
                     name: name,
-                    amount: amount,
+                    amount: Number(amount),
                     type: type,
                 },
             })
@@ -70,7 +70,7 @@ export default function Form() {
 
     return (
         <div className="form">
-            <h3>Add new transaction</h3>
+            <h3>{editMode ? "Update your" : "Add new"} transaction</h3>
 
             <form onSubmit={editMode ? handleUpdate : handleCreate}>
                 <div className="form-group">
