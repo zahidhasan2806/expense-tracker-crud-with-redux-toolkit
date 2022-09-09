@@ -47,7 +47,7 @@ export default function Transactions() {
                 <ul>{content}</ul>
             </div>
             <Link to="/all-transactions">
-                <button className="custom-btn">View All</button>
+                <button className="bg-green-500 text-white px-6 py-1 rounded-full cursor-pointer w-96">View All</button>
             </Link>
         </>
     );

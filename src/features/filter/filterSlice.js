@@ -12,17 +12,19 @@ const filterSlice = createSlice({
     reducers: {
         selecteFilterMode: (state, action) => {
             state.filterMode = action.payload
-        }
-    },
-    searched: (state, action) => {
-        state.search = action.payload;
-        state.reset = false
-    },
-    resetFilters: (state) => {
-        state.reset = true
-        state.search = ""
-        state.filterMode = "all"
+            state.search = ""
+        },
+        searched: (state, action) => {
+            state.search = action.payload;
+            state.reset = false
+            state.filterMode = ''
+        },
+        resetFilters: (state) => {
+            state.reset = true
+            state.search = ""
+            state.filterMode = ""
 
+        }
     }
 });
 

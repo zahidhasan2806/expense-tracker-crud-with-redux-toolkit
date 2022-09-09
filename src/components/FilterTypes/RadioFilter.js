@@ -3,6 +3,7 @@ import { selecteFilterMode } from '../../features/filter/filterSlice';
 
 const RadioFilter = () => {
     const dispatch = useDispatch();
+    const { reset } = useSelector(state => state.filters)
 
     const handleFilterMode = (e) => {
         const type = (e.target.value);
@@ -12,7 +13,7 @@ const RadioFilter = () => {
     return (
         <div>
             <div className="form-group radio">
-                <label>Choose Filter Option :</label>
+                <label>Choose any :</label>
                 <div className="radio_group">
                     <input
                         required

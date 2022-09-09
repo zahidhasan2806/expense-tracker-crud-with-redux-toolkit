@@ -4,8 +4,7 @@ export const getTransactions = async (filterMode, search, pageNumber, perPageExp
     let queryString = "";
     if (search !== "") {
         pageNumber = 1;
-        const searchString = search.split("").map(word => `name_like=${word}`.join("&"))
-        queryString += `&${searchString}`;
+        queryString += `&q=${search}`
     }
     if (filterMode !== "") {
         pageNumber = 1;

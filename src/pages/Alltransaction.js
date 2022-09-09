@@ -4,16 +4,19 @@ import { editActive, removeTransaction } from '../features/transaction/transacti
 import numberWithCommas from '../utils/numberWithCommas';
 import editImage from "../assets/images/edit.svg"
 import deleteImage from "../assets/images/delete.svg"
+import Modal from '../components/Modal';
+import { useState } from 'react';
 
 
 const Alltransaction = ({ transaction, setShowEditForm }) => {
     const { name, amount, type, id } = transaction || {};
     const dispatch = useDispatch();
+    const [modalOpen, setModalOpen] = useState(false)
 
 
     const handleEdit = () => {
         dispatch(editActive(transaction));
-        setShowEditForm(true)
+        setModalOpen(true)
     };
 
     const handleDelete = () => {
@@ -25,6 +28,7 @@ const Alltransaction = ({ transaction, setShowEditForm }) => {
 
 
         <li className={`transaction ${type}`}>
+            {modalOpen && <Modal setModalOpen={setModalOpen} />}
             <p>{name}</p>
             <div className="right">
                 <p>৳ {numberWithCommas(amount)}</p>
@@ -35,6 +39,7 @@ const Alltransaction = ({ transaction, setShowEditForm }) => {
                     <img alt="Delete" className="icon" src={deleteImage} />
                 </button>
             </div>
+
         </li>
     );
 };

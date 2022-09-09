@@ -74,6 +74,7 @@
 
 input {
     padding: 5px 10px;
+    color: #000 !important;
 }
 
 .btn {
@@ -99,6 +100,7 @@ ul {
 label {
     display: block;
     align-self: center;
+    color: black;
 }
 
 .radio_group {

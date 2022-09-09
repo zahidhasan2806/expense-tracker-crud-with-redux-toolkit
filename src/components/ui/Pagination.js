@@ -28,8 +28,8 @@ const Pagination = () => {
             .then(data => setTransactions(data));
     }, [transactions]);
     return (
-        <section className="pt-12">
-            <div className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 justify-end">
+        <section>
+            <div className="max-w-7xl mx-auto px-5 lg:px-0 flex gap-2 justify-end">
 
                 {/* <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" --> */}
 

@@ -5,8 +5,9 @@ import Form from '../components/Form'
 import Alltransaction from './Alltransaction';
 import { useState } from 'react';
 import Pagination from '../components/ui/Pagination';
-import RadioFilter from '../components/Transactions/RadioFilter';
-
+import RadioFilter from '../components/FilterTypes/RadioFilter';
+import SearchFilter from '../components/FilterTypes/SearchFilter';
+import { Link } from 'react-router-dom';
 const AllTransactions = () => {
     const dispatch = useDispatch();
     const [showEditForm, setShowEditForm] = useState(false)
@@ -41,15 +42,33 @@ const AllTransactions = () => {
         content = <p>No transactions found!</p>;
     }
 
+
+
+
     return (
         <>
-            {showEditForm && <Form />}
-            <RadioFilter />
-            <p className="second_heading">Your Transactions:</p>
 
+            <div className='form'>
+                <SearchFilter />
+                <RadioFilter />
+            </div>
             <div className="conatiner_of_list_of_transactions">
                 <ul>{content}</ul>
-                <Pagination />
+                <div className='flex justify-between'>
+                    <div>
+                        <Link to="/">
+                            <button
+                                className="bg-green-500 text-white px-4 py-1 rounded-full cursor-pointer"
+                            >
+                                Go to Home page
+                            </button>
+                        </Link>
+                    </div>
+                    <div>
+
+                        <Pagination />
+                    </div>
+                </div>
             </div>
         </>
     );
